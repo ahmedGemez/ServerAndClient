@@ -140,5 +140,10 @@ class HomeViewModel @Inject constructor(val shareUseCase: ShareUsecase, val cont
         compositeDisposable.add(disposable)
     }
 
-
+    override fun onCleared() {
+        super.onCleared()
+        if (!compositeDisposable.isDisposed && compositeDisposable != null) {
+            compositeDisposable.dispose()
+        }
+    }
 }
