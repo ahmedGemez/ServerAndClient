@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Client App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="first_num">first num</string>
+    <string name="sec_num">second num</string>
+    <string name="time">time wirh seconds</string>
+    <string name="calculate">Calculate</string>
+
+
+    <string name="first_num_item">first num : </string>
+    <string name="sec_num_item">second num : </string>
+    <string name="name">name : </string>
+    <string name="result">result : </string>
+
+</resources>

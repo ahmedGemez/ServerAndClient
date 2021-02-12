@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.clientapp.presentation.ui.homefragment.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        tools:context=".presentation.ui.homefragment.HomeFragment">
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/first_num"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:hint="@string/first_num"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="2dp"
+            android:text="@={viewmodel.first}"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/time"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:hint="@string/time"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="2dp"
+            android:text="@={viewmodel.time}"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/sec_num"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/first_num" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/sec_num"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:hint="@string/sec_num"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="2dp"
+            android:text="@={viewmodel.second}"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/time"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_num">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/types"
+                selectedInsideValue="@{viewmodel.typeValue}"
+                selectedValue="@={viewmodel.typeItemPosition}"
+                spinnerList="@{viewmodel.types}"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="@{(v) -> viewmodel.calculate()}"
+            android:text="@string/calculate"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/operation_rec"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:items="@{viewmodel.items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="@{(v) -> viewmodel.location()}"
+            android:text="Location"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+<!--
+
+    selectedInsideValue="@{viewmodel.type}"
+    selectedValue="@={viewmodel.categoryIdItemPosition}"
+    spinnerList="@{viewmodel.types}"-->
+
+
