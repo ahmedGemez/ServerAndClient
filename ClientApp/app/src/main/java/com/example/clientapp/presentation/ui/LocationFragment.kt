@@ -59,7 +59,7 @@ class LocationFragment : Fragment() {
             override fun onLocationChanged(location: Location) {
                 fragmentHomeBinding.latValue.text = location.latitude.toString()
                 fragmentHomeBinding.longValue.text = location.longitude.toString()
-
+                mLocationManagerGPS?.removeUpdates(mLocationListenerGPS!!);
             }
             override fun onStatusChanged(
                 provider: String,

@@ -99,7 +99,6 @@ class HomeViewModel @Inject constructor(val shareUseCase: ShareUsecase, val cont
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 getAllOperations()
-                Log.d("dvdvdv", "sucesssss$it")
             }, {
 
             }
